@@ -18,5 +18,14 @@
 # Output: false
 # Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
-def isPalindrome():
+
+def isPalindrome(x: int) -> bool:
+    if x < 0 or (x % 10 == 0 and x != 0):  # Edge cases
+        return False
     
+    reversed_half = 0
+    while x > reversed_half:
+        reversed_half = reversed_half * 10 + x % 10
+        x //= 10
+
+    return x == reversed_half or x == reversed_half // 10
